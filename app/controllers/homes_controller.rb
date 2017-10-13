@@ -1,5 +1,6 @@
 class HomesController < ApplicationController
 	before_action :set_user_name
+	skip_before_action :verify_authenticity_token
 
 	def index
 	end
@@ -7,11 +8,10 @@ class HomesController < ApplicationController
 	def set_user_name
 		user = User.where(ip_address: request.remote_ip).last
 		if user.present?
-			@user_name = user.username
+			@user = user
 		else
 			username = find_unique_username(Faker::Name.first_name)
-			user = User.create(username: username,ip_address: request.remote_ip)
-			@user_name = user.username
+			@user = User.create(username: username,ip_address: request.remote_ip)
 		end
 	end
 
@@ -28,5 +28,18 @@ class HomesController < ApplicationController
 	      return new_username if ! taken_usernames.include?(new_username)
 	      count += 1
 	    end
+  	end
+
+  	def update_tile_color
+  		params.permit!
+  		params[:tiles].split(",").each do |tile|
+  			position = tile.split("-")[1].split("_")
+  			@user.palettes.create(code: params[:color_code],row: position[0],column: position[1])
+  		end
+  		respond_to :js
+  	end
+
+  	def reload_tiles
+  		respond_to :js
   	end
 end

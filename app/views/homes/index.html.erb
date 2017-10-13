@@ -1,9 +1,54 @@
-<table>
-	<%for i in 1..20 do %>
-  <tr>
-  	<% for j in 1..20 do%>
-    	<td ><div class="content"></div></td>
-    <%end%>
-  </tr>
-  <%end%>
-<table>
+<div id="tiles">
+  <%= render partial: "tiles"%>
+</div>
+<br/>
+<div>
+  Color Picker: <input class="colors">
+</div>
+
+<button onclick="updateTileColors();">Ok</button>
+<button>Cancel</button>
+
+<script type="text/javascript">
+  $(".colors").minicolors({
+    position: 'top right'
+  });
+function toggleClass(e){
+  if ($(e).hasClass("selected")){
+    $(e).removeClass("selected");
+    alert("Tile unselected");
+  }
+  else{
+    $(e).addClass("selected");
+    alert("Tile selected");
+  }
+}
+function updateTileColors(){
+  if ($(".selected").size() == 0){
+    alert("Please select a square!")
+  }
+  else{
+    selectedColor = $(".colors").val();
+    selectedTiles = []
+    $(".selected").map(function() {
+      $(this).css("background-color",selectedColor);
+      selectedTiles.push($( this ).attr("id"))
+    });
+    $.ajax({
+      type: "POST",
+      url: "/homes/update_tile_color",
+      data: {tiles: selectedTiles.join(","),color_code: selectedColor}
+    });
+    
+  }
+}
+function reloadTile(){
+  if ($(".selected").size() == 0){
+    $.ajax({
+      type: "get",
+      url: "/homes/reload_tiles"
+    });
+  }
+}
+  window.setInterval(reloadTile,8000);
+</script>
