@@ -32,3 +32,12 @@ tr > td{
 table.leaderboard tr > td{
 	border: 2px solid;
 }
+.ml300{
+	margin-left: 300px;
+}
+.ml400{
+	margin-left: 400px;
+}
+.mt10{
+	margin-top: 10px;
+}

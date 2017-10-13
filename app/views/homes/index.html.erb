@@ -2,12 +2,13 @@
   <%= render partial: "tiles"%>
 </div>
 <br/>
-<div>
+<div class="ml300">
   Color Picker: <input class="colors">
 </div>
-
-<button onclick="updateTileColors();">Ok</button>
-<button>Cancel</button>
+<div class="ml400 mt10">
+  <button onclick="updateTileColors();">Ok</button>
+  <button>Cancel</button>
+</div>
 
 <script type="text/javascript">
   $(".colors").minicolors({
