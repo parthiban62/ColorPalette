@@ -42,4 +42,8 @@ class HomesController < ApplicationController
   	def reload_tiles
   		respond_to :js
   	end
+
+  	def leaderboard
+  		@users = User.joins(:palettes).select("users.*, count(palettes.id) as scount").group("users.id").order("scount DESC")
+  	end
 end

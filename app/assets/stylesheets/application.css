@@ -25,3 +25,10 @@ tr > td{
 .selected{
 	border: 10px solid;
 }
+.leaderboard{
+	width: 600px;
+	border: 2px solid;
+}
+table.leaderboard tr > td{
+	border: 2px solid;
+}

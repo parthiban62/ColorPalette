@@ -10,5 +10,4 @@ class Palette < ApplicationRecord
 		end
 		return result
 	end
-
 end
