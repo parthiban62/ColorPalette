@@ -9,25 +9,10 @@ class HomesController < ApplicationController
 		if user.present?
 			@user = user
 		else
-			username = find_unique_username(Faker::Name.first_name)
+			username = "Anonymous#{User.count+1}-#{DateTime.now.to_i}"
 			@user = User.create(username: username,ip_address: request.remote_ip)
 		end
 	end
-
-	def find_unique_username(username)
-	    taken_usernames = User.where("username LIKE ?", "#{username}%").pluck(:username)
-
-	    # username if it's free
-	    return username unless taken_usernames.include?(username)
-
-	    count = 2
-	    while true
-	      # username_2, username_3...
-	      new_username = "#{username}_#{count}"
-	      return new_username unless taken_usernames.include?(new_username)
-	      count += 1
-	    end
-  	end
 
   	def update_tile_color
   		params.permit!
