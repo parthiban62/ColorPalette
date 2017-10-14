@@ -1,10 +1,10 @@
-	<table>
-		<%for i in 1..20 do %>
-			<tr>
-				<% for j in 1..20 do%>
-					<% tile_info = get_tile_details(i,j)%>
-					<td><%= generate_tile(i,j,tile_info)%></td>
-				<%end%>
-			</tr>
-		<%end%>
-	</table>
+<table>
+  <%for i in 1..20 do %>
+   <tr>
+    <% for j in 1..20 do%>
+      <% tile_info = get_tile_details(i,j)%>
+      <td><%= generate_tile(i,j,tile_info)%></td>
+    <%end%>
+   </tr>
+  <%end%>
+</table>
