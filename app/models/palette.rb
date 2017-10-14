@@ -10,6 +10,6 @@ class Palette < ApplicationRecord
   end
 
   def form_time_stamp
-  	self.updated_at.strftime("%d-%m-%Y %H:%M:%S")
+   self.updated_at.strftime("%d-%m-%Y %H:%M:%S")
   end
 end
