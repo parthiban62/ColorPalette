@@ -1,7 +1,8 @@
   //load color picker
   $(document).ready(function(){
     $(".colors").minicolors({
-      position: 'top right'
+      position: 'top right',
+      inline: true
     });
   })
 
