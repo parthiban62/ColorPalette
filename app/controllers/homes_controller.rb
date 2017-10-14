@@ -1,6 +1,5 @@
 class HomesController < ApplicationController
 	before_action :set_user_name
-	skip_before_action :verify_authenticity_token
 
 	def index
 	end
