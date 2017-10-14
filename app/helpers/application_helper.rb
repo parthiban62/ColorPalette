@@ -1,10 +1,12 @@
 module ApplicationHelper
-  def get_tile_details(i,j)
-   return Palette.find_color_code_and_user_stamp(i,j)
+  def get_tile_details(row,col)
+    Palette.find_color_code_and_user_stamp(row,col)
   end
 
-  def generate_tile(i,j)
-   tile_info = get_tile_details(i,j)
-   raw("<div onclick='toggleClass(this);' class='content' id='tile-#{i}_#{j}' style='background-color: #{tile_info[0]}' title='#{tile_info[1]}'></div>")
+  def generate_tile(row,col)
+    tile_info = get_tile_details(row,col)
+    raw("<div onclick='toggleClass(this);' class='content' 
+         id='tile-#{row}_#{col}' style='background-color: #{tile_info[0]}' 
+         title='#{tile_info[1]}'></div>")
   end
 end
