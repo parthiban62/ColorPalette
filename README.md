@@ -19,5 +19,5 @@ Update the board in realtime using websockets
 
 
 
-Implementation Details
+Implementation Details:
 Designed the user and palette model to track the users and the colors they were applying on each square. For generating dynamic username for the users who visits the site using the ip address of the request and if the user visits the site again retains the same username using the ip address. Tracking the color applied on the square/tile by using the Row X Column position of the square/tile.
