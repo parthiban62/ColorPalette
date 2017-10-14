@@ -1,10 +1,10 @@
-<table>
-	<%for i in 1..20 do %>
-	  <tr>
-	  	<% for j in 1..20 do%>
-	  		<% tile_info = get_tile_details(i,j)%>
-	    	<td ><div onclick="toggleClass(this);" class="content" id="tile-<%=i%>_<%=j%>" style="background-color: <%= tile_info[0]%>" title="<%= tile_info[1]%>"></div></td>
-	    <%end%>
-	  </tr>
-  	<%end%>
-</table>
+	<table>
+		<%for i in 1..20 do %>
+			<tr>
+				<% for j in 1..20 do%>
+					<% tile_info = get_tile_details(i,j)%>
+					<td ><div onclick="toggleClass(this);" class="content" id="tile-<%=i%>_<%=j%>" style="background-color: <%= tile_info[0]%>" title="<%= tile_info[1]%>"></div></td>
+				<%end%>
+			</tr>
+		<%end%>
+	</table>

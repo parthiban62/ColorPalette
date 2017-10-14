@@ -14,4 +14,5 @@
 //= require turbolinks
 //= require jquery
 //= require jquery.minicolors
+//= require tiles
 //= require_tree .

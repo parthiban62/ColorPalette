@@ -19,13 +19,13 @@ class HomesController < ApplicationController
 	    taken_usernames = User.where("username LIKE ?", "#{username}%").pluck(:username)
 
 	    # username if it's free
-	    return username if ! taken_usernames.include?(username)
+	    return username unless taken_usernames.include?(username)
 
 	    count = 2
 	    while true
 	      # username_2, username_3...
 	      new_username = "#{username}_#{count}"
-	      return new_username if ! taken_usernames.include?(new_username)
+	      return new_username unless taken_usernames.include?(new_username)
 	      count += 1
 	    end
   	end
